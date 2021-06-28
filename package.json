@@ -1,33 +1,53 @@
 {
-  "name": "great-novels-ui",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "great-novels-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "sequelize": "^6.6.4",
+    "sequelize-cli": "^6.2.0",
+    "web-vitals": "^1.1.2"
+  },
   "scripts": {
-    "dev": "./node_modules/.bin/nodemon index.js",
+    "dev:client": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dev:server": "./node_modules/.bin/nodemon index.js",
     "dev:migrate": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./configs/sequelize.js",
     "lint": "./node_modules/.bin/eslint --format codeframe .",
-    "lint:fix": "./node_modules/.bin/eslint --fix --format codeframe ."
+    "lint:fix": "./node_modules/.bin/eslint --fix --format codeframe .",
+    "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/stackeducation/great-novels-api.git"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/stackeducation/great-novels-api/issues"
-  },
-  "homepage": "https://github.com/stackeducation/great-novels-api#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "mysql2": "^2.1.0",
-    "sequelize": "^5.21.6",
-    "sequelize-cli": "^5.5.1"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
+    "concurrently": "^6.2.0",
     "env-cmd": "^10.1.0",
-    "eslint": "^6.8.0",
-    "nodemon": "^2.0.2"
+    "eslint": "^7.29.0",
+    "nodemon": "^2.0.7"
   }
 }
